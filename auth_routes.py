@@ -8,4 +8,4 @@ async def autenticar():
     Essa rota e padrao de autenticacao do sistema.
     """
     
-    return {"mensagem": "Voce acessou a rota padrao de autenticacao", "autenticado": False}
+    return {"mensagem": "Voce acessou a rota padrao de autenticacao", "autenticado": False} 
