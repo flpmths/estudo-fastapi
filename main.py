@@ -1,6 +1,24 @@
+#.venv\Scripts\Activate ##Para ativar o venv ou Ctrl + Shift + P e pesquise por "Python: Select Interpreter" e ative o recomendado
+
+#alembic revision --autogenerate -m "Initial Migration"              ##Para iniciar uma migracao do banco de dados
+
+# Quando houver alteracao estrutural nas tabela usar o exemplo a seguir
+#alembic revision --autogenerate -m "mensagem_descrevendo_a_mudanca" ##Gera nova migration
+#alembic upgrade head                                                ##Aplica no banco
+
+
 from fastapi import FastAPI
+from passlib.context import CryptContext
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 app = FastAPI()
+
+bcrypt_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 from auth_routes import auth_router
 from order_routes import order_router

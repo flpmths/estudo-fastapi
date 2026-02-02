@@ -1,7 +1,6 @@
 from sqlalchemy import create_engine, Column, String, Integer, Boolean, Float, ForeignKey
 from sqlalchemy.orm import declarative_base
 from sqlalchemy_utils.types import ChoiceType # pip install sqlalchemy_utils
-from alembic import 
 
 # instalar biblioteca alembic --> pip install alembic para migrar informacoes do banco de dados no sqlalchemy de forma segura /// no terminal digitar alembic init alembic
 
@@ -37,14 +36,14 @@ class Pedido(Base):
     __tablename__ = "pedidos"
     
     
-    STATUS_PEDIDOS = (              #tupla como "dicionario" com chave e valor para ser usado em ChoiceType 
-        ("PENDENTE", "PENDENTE"),
-        ("CANCELADO", "CANCELADO"),
-        ("FINALIZADO", "FINALIZADO")
-    )
+    # STATUS_PEDIDOS = (              #tupla como "dicionario" com chave e valor para ser usado em ChoiceType 
+    #     ("PENDENTE", "PENDENTE"),
+    #     ("CANCELADO", "CANCELADO"),
+    #     ("FINALIZADO", "FINALIZADO")
+    # )
     
     id = Column("id", Integer, primary_key=True, autoincrement=True)
-    status = Column("status", ChoiceType(choices=STATUS_PEDIDOS)) #Pendente, Cancelado e Finalizado
+    status = Column("status", String) #Pendente, Cancelado e Finalizado
     usuario = Column("usuario", ForeignKey("usuarios.id")) #ForeignKey/Chave estrangeira é chamado a partir de outra tabela  - Passado o nome da tabela __tablename__ - é passado tambem um identificador unico, por exemplo: ID
     preco = Column("preco", Float)
     
@@ -58,7 +57,7 @@ class Pedido(Base):
         
 # ItensPedido
 class ItemPedido(Base):
-    ___tablename__ = "itens_pedidos"
+    __tablename__ = "itens_pedidos"
     
     id = Column("id", Integer, primary_key=True, autoincrement=True)
     quantidade = Column("quantidade", Integer)
