@@ -6,6 +6,5 @@ def pegar_sessao():
         Session = sessionmaker(bind=db)
         session = Session()
         yield session
-        
     finally:
-        session.close()
+        session.close() 

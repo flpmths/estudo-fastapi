@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine, Column, String, Integer, Boolean, Float, ForeignKey
-from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import declarative_base #Object-Relational Mapping | ORM transforma tabelas do banco em objetos Python, facilitando CRUD sem SQL manual
 from sqlalchemy_utils.types import ChoiceType # pip install sqlalchemy_utils
 
 # instalar biblioteca alembic --> pip install alembic para migrar informacoes do banco de dados no sqlalchemy de forma segura /// no terminal digitar alembic init alembic
